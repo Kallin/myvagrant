@@ -16,11 +16,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # doesn't already exist on the user's system.
   config.vm.box_url = "http://files.vagrantup.com/"
 
-  # suppressing ubuntu terminal errors; https://github.com/mitchellh/vagrant/issues/1673
-  config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"  
+  config.vm.provision :shell, :path => "shell/suppress-terminal-errors.sh"
+  config.vm.provision :shell, :path => "shell/dpkg-reconfigure.sh"
+
+  config.vm.provision "puppet" do |puppet|
+    puppet.manifests_path = "puppet/bootstrap"
+  end
 
   config.vm.provision :shell, :path => "shell/setup-librarian-puppet.sh"
-
+  
   config.vm.provision "puppet" do |puppet|
     puppet.manifests_path = "puppet/manifests"
   end
