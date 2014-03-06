@@ -1,0 +1,39 @@
+[user]
+        name = Kallin
+        email = knagelbe@salesforce.com
+
+[color]
+  ui = auto
+  
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+  
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+  
+[color "status"]
+  added = green
+  changed = yellow
+  untracked = red
+  
+[color]
+  ui = true
+  
+[color "diff"]
+  whitespace = red reverse
+  
+[core]
+  whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+  
+[alias]
+        st = status
+        bltadd = add -u blt-code
+        ls = status -s
+        cdiff = diff --cached
+        ci = commit
+        pmm = push me master
