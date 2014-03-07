@@ -10,13 +10,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "precise32"
+  config.vm.box = "ubuntu-1310"
   
   config.vm.hostname = "vagrant.example.com"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = "http://files.vagrantup.com/"
+  config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-1310-x64-virtualbox-puppet.box"
   
   config.vm.provision "puppet" do |puppet|
     puppet.manifests_path = "puppet/bootstrap"
@@ -26,6 +26,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   
   config.vm.provision "puppet" do |puppet|
     puppet.manifests_path = "puppet/manifests"
+  end
+
+  config.vm.provider "virtualbox" do |v|
+      v.memory = 1024
   end
 
 end

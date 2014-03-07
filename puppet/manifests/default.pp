@@ -32,4 +32,12 @@ exec { 'lesskey':
 include ohmyzsh
 ohmyzsh::install { 'vagrant': }
 
+include rvm
+include java
+
+rvm_system_ruby {
+  'ruby-2.1.1':
+    ensure      => 'present',
+    default_use => true,
+}
  
